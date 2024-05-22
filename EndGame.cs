@@ -34,7 +34,7 @@ public class EndGameManager : MonoBehaviour
             if (endGamePanel != null)
             {
                 endGamePanel.SetActive(true);
-                Time.timeScale = 0f;
+                
                 if(Input.GetKeyDown(KeyCode.M))
                 {
                     ConfirmExit();
@@ -48,5 +48,7 @@ public class EndGameManager : MonoBehaviour
     {
         AsyncOperation asyncOperation = SceneManager.LoadSceneAsync("main menu");
         Time.timeScale = 1;
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
     }
 }

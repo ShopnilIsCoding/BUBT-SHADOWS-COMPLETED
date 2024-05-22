@@ -7,7 +7,7 @@ public class SimpleShootingGun : MonoBehaviour
 {
     public float bulletSpeed = 10f;
     public float shootingCooldown = 0.2f;
-    public int magazineCapacity = 10;
+    public int magazineCapacity = 5;
     public int storedAmmo = 50; // Total ammo available
     public ParticleSystem collisionParticles;
     public AudioSource audios;
@@ -127,7 +127,7 @@ public class SimpleShootingGun : MonoBehaviour
         else // Otherwise, wait for manual reload
         {
             yield return new WaitUntil(() => Input.GetKeyDown(KeyCode.R) && magazineCapacity < 5 && storedAmmo > 0);
-           int ammoToReload = Mathf.Min(10 - magazineCapacity, storedAmmo); // Reload up to 10 bullets or less if there's less ammo available
+           int ammoToReload = Mathf.Min(5 - magazineCapacity, storedAmmo); // Reload up to 10 bullets or less if there's less ammo available
             magazineCapacity += ammoToReload;
             storedAmmo -= ammoToReload;
         }

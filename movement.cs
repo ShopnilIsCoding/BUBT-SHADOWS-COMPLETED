@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class playerController : MonoBehaviour
 {
@@ -14,6 +16,9 @@ public class playerController : MonoBehaviour
     public float health = 100;
     public float startingHealth;
     public bool picked = false;
+    public Text diedtext1;
+    public Text diedtext2;
+    public GameObject diePannel;
     public void TakeDamage(int damageAmount)
     {
         health -= damageAmount;
@@ -90,6 +95,10 @@ public class playerController : MonoBehaviour
                 rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
             }
         }
+        if(health<=0)
+        {
+            PlayerDied();
+        }
     }
 
     private void OnCollisionStay(Collision collision)
@@ -102,5 +111,23 @@ public class playerController : MonoBehaviour
         {
             canjump = false;
         }
+    }
+    public void PlayerDied()
+    {
+        diedtext1.text = "It Was Not Expected From You!";
+        diedtext2.text = "YOU DIED";
+        diePannel.SetActive(true);
+        if (Input.GetKeyDown(KeyCode.M))
+        {
+            ConfirmExit();
+        }
+
+    }
+    public void ConfirmExit()
+    {
+        AsyncOperation asyncOperation = SceneManager.LoadSceneAsync("main menu");
+        Time.timeScale = 1;
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
     }
 }

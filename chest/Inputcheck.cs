@@ -33,6 +33,7 @@ public class InputChecker : MonoBehaviour
                     animator.SetTrigger("open");
                     weaponwheel.SetActive(true);
                     scrollwheel.isRayGunActive = true;
+                    Destroy(crate, 2f);
                    
                 }
                 else

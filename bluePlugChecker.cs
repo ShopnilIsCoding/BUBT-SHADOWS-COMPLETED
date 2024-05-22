@@ -7,13 +7,13 @@ public class bluePlugChecker : MonoBehaviour
 {
     public playerController playerController;
     public Text text;
-    public FuseBox fusebox;
+   // public FuseBox fusebox;
     public GameObject TextObject;
    
     void Start()
     {
-        fusebox = GetComponent<FuseBox>();
-        fusebox.enabled = false;
+       // fusebox = GetComponent<FuseBox>();
+       // fusebox.enabled = false;
         TextObject.SetActive(false);
     }
 
@@ -30,13 +30,13 @@ public class bluePlugChecker : MonoBehaviour
             if(playerController.picked)
             {
                 text.text = "PRESS P TO PLUG/UNPLUG";
-                fusebox.enabled = true;
+               // fusebox.enabled = true;
 
             }
             else
             {
                 text.text = "Collect the Blue Plug First";
-                fusebox.enabled = false;
+                //fusebox.enabled = false;
             }
 
         }
